@@ -1,0 +1,22 @@
+[package]
+name = "devos"
+version = "0.1.0"
+
+[build-dependencies]
+bootloader = { git = "https://github.com/rust-osdev/bootloader", rev = "a1b2eb88fd365fa7b4b35e29495076f22932cb7f" } # make sure this is compatible with bootloader_api in [workspace.dependencies]
+kernel = { path = "kernel", artifact = "bin", target = "x86_64-unknown-none", default-features = false }
+
+[dependencies]
+
+[workspace]
+members = [
+    "kernel",
+]
+
+[workspace.dependencies]
+backtrace = { version = "0.3.69", default-features = false }
+bootloader_api = { git = "https://github.com/rust-osdev/bootloader", rev = "a1b2eb88fd365fa7b4b35e29495076f22932cb7f" }
+linked_list_allocator = "0.10.5"
+
+[features]
+default = []
